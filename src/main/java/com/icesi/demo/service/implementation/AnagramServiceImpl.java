@@ -11,14 +11,15 @@ import java.util.List;
 public class AnagramServiceImpl implements AnagramService{
     @Override
     public AnagramResponseDTO isAnagram(List<String> stringList) {
-        boolean isAnagram;
+        boolean isAnagram = false;
         char[] arrayA = stringList.get(0).toLowerCase().toCharArray();
         char[] arrayB = stringList.get(1).toLowerCase().toCharArray();
 
-        Arrays.sort(arrayA);
-        Arrays.sort(arrayB);
-
-        isAnagram = Arrays.equals(arrayA, arrayB);
+        if(arrayA.length == arrayB.length){
+            Arrays.sort(arrayA);
+            Arrays.sort(arrayB);
+            isAnagram = Arrays.equals(arrayA, arrayB);
+        }
 
         return new AnagramResponseDTO(isAnagram);
     }
