@@ -15,6 +15,7 @@ public class StringListServiceImpl implements StringListService {
 
     @Override
     public ConcatenatedResponseDTO concatenateStrings(List<String> stringList) {
+        stringList.removeIf(Objects::isNull);
         return new ConcatenatedResponseDTO(String.join("", stringList));
     }
 }
