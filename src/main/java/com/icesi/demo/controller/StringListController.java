@@ -8,13 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@AllArgsConstructor
+@RestController
 public class StringListController implements StringListAPI {
 
+    private final StringListService stringListService;
+
+    //Can be replaced with @AllArgsConstructor
+    public StringListController(StringListService stringLIstService){
+        this.stringListService = stringLIstService;
+    }
 
     @Override
     public ConcatenatedResponseDTO concatenateStrings(List<String> stringList) {
-        return null;
+
+        return stringListService.concatenateStrings(stringList);
     }
 
 }

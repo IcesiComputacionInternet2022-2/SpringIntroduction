@@ -9,10 +9,15 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 
+@Service
 public class StringListServiceImpl implements StringListService {
 
     @Override
     public ConcatenatedResponseDTO concatenateStrings(List<String> stringList) {
-        return null;
+
+        while(stringList.contains(null)){
+            stringList.remove(null);
+        }
+        return new ConcatenatedResponseDTO(String.join("",stringList));
     }
 }
