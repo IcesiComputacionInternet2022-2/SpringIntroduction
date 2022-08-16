@@ -13,9 +13,10 @@ public class AnagramServiceImpl implements AnagramService {
 
     @Override
     public boolean checkIfAnagram(List<String> stringList) {
+        int originalSize = stringList.size();
         stringList.removeIf(Objects::isNull); //Take nulls away
         stringList.removeIf(s -> Pattern.matches("[0-9]", s)); //Take nums away
-        if (stringList.size() != 2) return false;
+        if (stringList.size() != 2 || originalSize != 2) return false;
         char[] chars1 = stringList.get(0).toLowerCase().trim().toCharArray();
         char[] chars2 = stringList.get(1).toLowerCase().trim().toCharArray();
         Arrays.sort(chars1);
