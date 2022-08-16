@@ -12,7 +12,6 @@ public class AnagramServiceImpl implements AnagramService {
 
     @Override
     public AnagramResponseDTO anagramCheck(List<String> stringList) {
-
         String p1 = stringList.get(0).toLowerCase();
         String p2 = stringList.get(1).toLowerCase();
 
