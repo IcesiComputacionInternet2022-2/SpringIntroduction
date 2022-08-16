@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface StringListAPI {
 
-    @PostMapping("/concatenateStrings")
+    @PostMapping("/Anagrama")
     public ConcatenatedResponseDTO concatenateStrings(@RequestBody List<String> stringList);
 
 }
