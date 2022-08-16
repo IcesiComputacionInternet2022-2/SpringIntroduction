@@ -17,7 +17,7 @@ public class AnagramController implements AnagramAPI{
 
     @Override
     public AnagramResponseDTO isAnagram(List<String> stringList) {
-        if (stringList.contains(null) || stringList.size() == 2 || !stringList.stream().allMatch(string -> string.matches("[a-zA-Z]+"))){
+        if (stringList.contains(null) || stringList.size() != 2 || !stringList.stream().allMatch(string -> string.matches("[a-zA-Z]+"))){
             return new AnagramResponseDTO(false);
         }
         return anagramService.isAnagram(stringList);
