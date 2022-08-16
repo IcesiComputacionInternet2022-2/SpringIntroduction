@@ -1,8 +1,7 @@
 package com.icesi.demo.service.implementation;
 
 import com.icesi.demo.dto.AnagramResponseDTO;
-import com.icesi.demo.dto.ConcatenatedResponseDTO;
-import com.icesi.demo.service.StringListService;
+import com.icesi.demo.service.AnagramService;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +11,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class StringListServiceImpl implements StringListService {
-
-    @Override
-    public ConcatenatedResponseDTO concatenateStrings(List<String> stringList) {
-        return new ConcatenatedResponseDTO(String.join("", stringList));
-    }
+public class AnagramServiceImpl implements AnagramService {
     public AnagramResponseDTO searchAnagram(List<String> stringList) {
 
         String word1 = stringList.get(0).trim().toLowerCase();

@@ -1,7 +1,6 @@
 package com.icesi.demo.api;
 
 import com.icesi.demo.dto.AnagramResponseDTO;
-import com.icesi.demo.dto.ConcatenatedResponseDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 
-public interface StringListAPI {
+public interface AnagramListAPI {
 
-    @PostMapping("/concatenateStrings")
-    public ConcatenatedResponseDTO concatenateStrings(@RequestBody List<String> stringList);
+    @PostMapping("/anagram")
+    public AnagramResponseDTO searchAnagram(@RequestBody List<String> stringList);
 
 }
