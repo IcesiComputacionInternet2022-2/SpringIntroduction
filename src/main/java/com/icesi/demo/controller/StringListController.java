@@ -11,10 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class StringListController implements StringListAPI {
 
-<<<<<<< Updated upstream
-=======
     private final StringListService stringListService;
->>>>>>> Stashed changes
 
     @Override
     public ConcatenatedResponseDTO concatenateStrings(List<String> stringList) {
