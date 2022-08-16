@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class AnagramResponseDTO {
-    private String result;
+    private Boolean result;
 }

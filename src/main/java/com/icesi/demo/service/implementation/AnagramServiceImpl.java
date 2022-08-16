@@ -5,6 +5,7 @@ import com.icesi.demo.service.AnagramService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class AnagramServiceImpl implements AnagramService {
@@ -12,24 +13,17 @@ public class AnagramServiceImpl implements AnagramService {
     @Override
     public AnagramResponseDTO anagramCheck(List<String> stringList) {
 
-        String p1 = stringList.get(0);
-        String p2 = stringList.get(1);
-        String response = "";
+        String p1 = stringList.get(0).toLowerCase();
+        String p2 = stringList.get(1).toLowerCase();
 
-        if(p1.length() == p2.length()){
-            for(int i = 0; i < p1.length(); i++){
-                char x = p1.charAt(i);
-                p2 = p2.replace(x,' ');
-            }
-
-            if(p2.trim().equalsIgnoreCase("")){
-                response = "Anagrama";
-            }else{
-                response = "No anagrama";
-            }
-        }else{
-            response = "Diferente tamaño";
+        for(int i = 0; i < p1.length(); i++){
+            p2 = p2.replace(p1.charAt(i),' ');
         }
-        return new AnagramResponseDTO(response);
+
+        if(p2.trim().equalsIgnoreCase("")){
+            return new AnagramResponseDTO(true);
+        }else{
+            return new AnagramResponseDTO(false);
+        }
     }
 }

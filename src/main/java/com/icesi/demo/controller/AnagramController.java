@@ -18,6 +18,25 @@ public class AnagramController implements AnagramAPI {
 
     @Override
     public AnagramResponseDTO anagramCheck(List<String> stringList) {
-        return null;
+        return verifyStrings(stringList);
+    }
+
+    public AnagramResponseDTO verifyStrings(List<String> stringList){
+        if(stringList.size() == 2){
+            String p1 = stringList.get(0);
+            String p2 = stringList.get(1);
+
+            if(p1.length() == p2.length()) {
+                if(p1.matches("^[a-zA-Z]+$") && p2.matches("^[a-zA-Z]+$")){
+                    return anagramService.anagramCheck(stringList);
+                }else{
+                    return new AnagramResponseDTO(false);
+                }
+            }else{
+                return new AnagramResponseDTO(false);
+            }
+        }else{
+            return new AnagramResponseDTO(false);
+        }
     }
 }
