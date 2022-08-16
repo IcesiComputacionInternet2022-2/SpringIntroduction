@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @AllArgsConstructor
+@RestController
 public class StringListController implements StringListAPI {
 
-
+    private final StringListService stringListService;
     @Override
     public ConcatenatedResponseDTO concatenateStrings(List<String> stringList) {
-        return null;
+        return stringListService.concatenateStrings(stringList);
     }
 
 }
