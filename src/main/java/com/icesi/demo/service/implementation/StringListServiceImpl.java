@@ -13,6 +13,14 @@ public class StringListServiceImpl implements StringListService {
 
     @Override
     public ConcatenatedResponseDTO concatenateStrings(List<String> stringList) {
+<<<<<<< Updated upstream
         return null;
+=======
+        return new ConcatenatedResponseDTO(stringList.stream()
+                .filter(s -> s != null)
+                .collect(Collectors.joining("")));
+
+        //return new ConcatenatedResponseDTO(String.join("", stringList));
+>>>>>>> Stashed changes
     }
 }
