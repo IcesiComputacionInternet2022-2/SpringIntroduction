@@ -15,6 +15,14 @@ public class StringListServiceImpl implements StringListService {
 
     @Override
     public ConcatenatedResponseDTO concatenateStrings(List<String> stringList) {
-        return new ConcatenatedResponseDTO(String.join("", stringList));
+
+        String concatenateResponse = "";
+        for(String str : stringList)
+        {
+            if(str!=null)
+                concatenateResponse += str;
+        }
+
+        return new ConcatenatedResponseDTO(concatenateResponse);
     }
 }
