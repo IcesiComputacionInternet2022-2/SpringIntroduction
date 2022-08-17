@@ -1,0 +1,5 @@
+com\icesi\demo\service\implementation\AnagramaServiceImpl.class
+com\icesi\demo\api\AnagramaAPI.class
+com\icesi\demo\service\AnagramaService.class
+com\icesi\demo\dto\AnagramaDTO.class
+com\icesi\demo\controller\AnagramaController.class

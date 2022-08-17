@@ -1,16 +1,15 @@
 package com.icesi.demo.service;
 
-import com.icesi.demo.dto.ConcatenatedResponseDTO;
+import com.icesi.demo.dto.AnagramaDTO;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @SpringBootApplication
 @Service
-public interface StringListService {
+public interface AnagramaService {
 
-
-    public ConcatenatedResponseDTO concatenateStrings(List<String> stringList);
-
+    public AnagramaDTO isAnagrama(List<String> list);
 }
