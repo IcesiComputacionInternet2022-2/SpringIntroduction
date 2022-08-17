@@ -19,6 +19,6 @@ public class AController implements AnagramAPI {
     @Override
     public AnagramDTO isAnagram(List<String> stringList) {
 
-        return anagramService.isAnagram(stringList.get(1), stringList.get(2));
+        return anagramService.isAnagram(stringList.get(0), stringList.get(1));
     }
 }

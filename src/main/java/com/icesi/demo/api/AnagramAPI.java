@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface AnagramAPI {
 
-    @GetMapping("/anagramAPI")
+    @PostMapping("/anagramAPI")
     public AnagramDTO isAnagram(@RequestBody List<String> stringList);
 }
