@@ -17,6 +17,6 @@ public class AnagramController implements AnagramAPI{
 
     @Override
     public ConfirmationDTO checkAnagrams(List<String> stringList) {
-        return null;
+        return anagramService.checkAnagrams(stringList);
     }
 }
