@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 
+@Service
 public class StringListServiceImpl implements StringListService {
 
     @Override
