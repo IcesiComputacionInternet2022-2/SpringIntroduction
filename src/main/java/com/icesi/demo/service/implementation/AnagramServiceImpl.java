@@ -16,7 +16,7 @@ public class AnagramServiceImpl implements AnagramService {
     public ConfirmationDTO checkAnagrams(List<String> stringList) {
         stringList.removeIf(Objects::isNull);
         stringList.removeIf(s -> Pattern.matches("[0-9]", s));
-        if (stringList.size() > 2) {
+        if (stringList.size() != 2) {
             return new ConfirmationDTO(false);
         }
 
