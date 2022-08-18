@@ -15,17 +15,9 @@ public class AnagramListServiceImpl implements AnagramListService {
     public AnagramResponseDTO isAnagram(List<String> stringList) {
         Boolean isAnagram = false;
 
-        try {
-            int firstWordSize = stringList.get(0).length();
-            int secondWordSize = stringList.get(1).length();
-
-            if(stringList.size()>2){
-                isAnagram = false;
-            }else if (firstWordSize != secondWordSize) {
-                isAnagram = false;
-            }else{
                 String firstWord = stringList.get(0).toLowerCase();
                 String secondWord = stringList.get(1).toLowerCase();
+
                 //convertimos las palabras en arreglo de chars
                 char[] lettersFirstWord = firstWord.toCharArray();
                 char[] lettersSecondWord = secondWord.toCharArray();
@@ -37,11 +29,6 @@ public class AnagramListServiceImpl implements AnagramListService {
                 //verificamos que los arreglos ordenados sean identicos.
                 isAnagram = Arrays.equals(lettersFirstWord, lettersSecondWord);
 
-
-            }
-        }catch (Exception e){
-            isAnagram=false;
-        }
 
 
         return new AnagramResponseDTO(isAnagram);

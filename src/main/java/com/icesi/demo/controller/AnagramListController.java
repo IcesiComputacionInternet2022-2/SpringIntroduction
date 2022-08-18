@@ -17,8 +17,43 @@ public class AnagramListController implements AnagramListAPI {
 
     @Override
     public AnagramResponseDTO isAnagram(@RequestBody List<String> stringList) {
-        return anagramListServiceImpl.isAnagram(stringList);
+
+        if (!validateList(stringList)){
+            return new AnagramResponseDTO(false);
+        }else{
+            if(!validateElements(stringList)){
+                return new AnagramResponseDTO(false);
+            }else{
+                return anagramListServiceImpl.isAnagram(stringList);
+            }
+        }
     }
+
+
+    private boolean validateList(List<String> stringList){
+        return stringList!=null && stringList.size()==2;
+    }
+
+    private boolean validateElements(List<String> stringList){
+        boolean isValid=true;
+
+        for(String word:stringList){
+            isValid=validateElement(word);
+            if (!isValid){
+                break;
+            }
+        }
+
+        return isValid;
+
+    }
+
+    private boolean validateElement(String word){
+        return word!=null && word.matches("^[a-zA-Z]*$");
+    }
+
+
+
 
 
 }
