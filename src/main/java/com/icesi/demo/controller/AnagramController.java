@@ -17,10 +17,15 @@ public class AnagramController implements AnagramAPI {
 
     @Override
     public boolean checkAnagram(List<String> stringList) {
-        int originalSize = stringList.size();
-        stringList.removeIf(Objects::isNull); //Take nulls away
-        stringList.removeIf(s -> Pattern.matches("[0-9]", s)); //Take nums away
-        if (stringList.size() != 2 || originalSize != 2) return false;
-        return anagramService.isAnagram(stringList);
+        if (validList(stringList) && validElements(stringList)) return anagramService.isAnagram(stringList);
+        return false;
+    }
+
+    private boolean validList(List<String> stringList) {
+        return stringList != null && stringList.size() == 2;
+    }
+
+    private boolean validElements(List<String> stringList) {
+        return stringList.get(0) != null && stringList.get(1) != null && !stringList.get(0).matches(".*[0-9]+.*") && !stringList.get(1).matches(".*[0-9]+.*");
     }
 }
