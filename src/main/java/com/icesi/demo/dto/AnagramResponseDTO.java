@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ConcatenatedResponseDTO {
+public class AnagramResponseDTO {
 
-    private String result;
+    private boolean result;
 
 }
