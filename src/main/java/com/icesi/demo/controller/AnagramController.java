@@ -24,5 +24,19 @@ public class AnagramController implements AnagramAPI {
     @Override
     public IsAnagramResponseDTO isAnagram(List<String> words) {
         return anagramService.isAnagram(words);
+    }//No concatener tantos ifs si no usar otros metodos
+
+/*
+    private boolean validateList(List<String> words){
+        return words != null && words.size() == 2;
     }
+
+    private boolean validateElements(List<String> word){
+
+    }
+
+    private boolean validateElement(String word){
+        return word != null && !word.matches("^[a-zA-z]*$");//^ and $ symbols are not necesarry
+    }
+    */
 }
