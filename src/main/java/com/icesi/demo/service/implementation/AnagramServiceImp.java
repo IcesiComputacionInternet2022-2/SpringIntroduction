@@ -18,17 +18,12 @@ public class AnagramServiceImp implements AnagramService {
         boolean c1 = cad1.matches("[+-]?\\d*(\\.\\d+)?");
         boolean c2 = cad2.matches("[+-]?\\d*(\\.\\d+)?");
 
-        System.out.println(c1);
-        System.out.println(c2);
-
-
         AnagramResponseDTO responseDTO = new AnagramResponseDTO(false);
 
         if(!c1 && !c2){
             cad1 = sort(cad1.toUpperCase());
             cad2 = sort(cad2.toUpperCase());
             responseDTO.setResult(cad1.equals(cad2));
-            System.out.println(responseDTO.isResult());
 
         }
 
