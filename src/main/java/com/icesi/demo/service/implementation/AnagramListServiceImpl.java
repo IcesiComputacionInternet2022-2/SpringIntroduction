@@ -20,16 +20,13 @@ public class AnagramListServiceImpl implements AnagramListService {
     @Override
     public AnagramResponseDTO isAnagram(List<String> strings) {
 
-
-
-        List<HashMap<Character, Integer>> maps = new ArrayList<>();
-        int formerLength = (strings.get(0)==null)?-1:strings.get(0).length();
-        String currentWord = "";
-
         //We need at least two words
         if(strings.size()<2){
             return new AnagramResponseDTO(false);
         }
+
+        List<HashMap<Character, Integer>> maps = new ArrayList<>();
+        String currentWord = "";
 
         // For each word...
         for(int i=0; i<strings.size();i++){
@@ -39,15 +36,15 @@ public class AnagramListServiceImpl implements AnagramListService {
             // 1. check that there are no nulls
             if(currentWord==null){
                 return new AnagramResponseDTO(false);
-            }else{
-                // 2. eliminate case sensitivity
-                currentWord = currentWord.toUpperCase();
             }
 
-            // 3. check that all sizes are the same
-            if(formerLength!=currentWord.length()){
+            // 2. check that all sizes are the same
+            if(strings.get(0).length()!=currentWord.length()){
                 return new AnagramResponseDTO(false);
             }
+
+            // 3. eliminate case sensitivity
+            currentWord = currentWord.toUpperCase();
 
             // 4. Mapping every character in each word
             HashMap<Character, Integer> map = new HashMap<>();
@@ -62,24 +59,19 @@ public class AnagramListServiceImpl implements AnagramListService {
                 }
             }
             maps.add(map);
-
         }
 
-        // 5. Check count of each character between maps
-        for(int i=0; i<currentWord.length();i++){
-
-            char currentChar = currentWord.charAt(i);
-            int formerCharCounter = maps.get(0).get(currentChar);
-
-            for (int j=0; j<maps.size(); j++){
-
-                HashMap<Character, Integer> currentMap = maps.get(j);
-                if(currentMap.get(currentChar)!=formerCharCounter){
-                    return new AnagramResponseDTO(false);
-                }
-
+        // 5. Check all maps to be equal
+        for (int i=1; i<maps.size(); i++){
+            if(!maps.get(0).equals(maps.get(i))){
+                return new AnagramResponseDTO(false);
             }
         }
+
         return new AnagramResponseDTO(true);
     }
+
+
+
+
 }
