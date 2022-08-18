@@ -12,17 +12,15 @@ public class AnagramServiceImpl implements AnagramService {
 
     @Override
     public AnagramResponseDTO isAnagram(List<String> strings) {
-        String str1 = strings.get(0).toLowerCase();
-        String str2 = strings.get(1).toLowerCase();
-        char[] charArray1 = str1.toCharArray();
-        char[] charArray2 = str2.toCharArray();
+        String word1 = strings.get(0).toLowerCase();
+        String word2 = strings.get(1).toLowerCase();
+        char[] charArray1 = word1.toCharArray();
+        char[] charArray2 = word2.toCharArray();
         Arrays.sort(charArray1);
         Arrays.sort(charArray2);
-        str1 = String.valueOf(charArray1);
-        str2 = String.valueOf(charArray2);
-        if(!str1.matches("[a-zA-Z]+") || !str2.matches("[a-zA-Z]+") || strings.size() > 2)
-            return new AnagramResponseDTO(false);
-        boolean result = str1.equalsIgnoreCase(str2);
+        word1 = String.valueOf(charArray1);
+        word2 = String.valueOf(charArray2);
+        boolean result = word1.equalsIgnoreCase(word2);
         return new AnagramResponseDTO(result);
     }
 }
