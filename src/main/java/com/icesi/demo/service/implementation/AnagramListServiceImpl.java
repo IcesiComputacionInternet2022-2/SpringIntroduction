@@ -14,21 +14,14 @@ import java.util.stream.Stream;
 public class AnagramListServiceImpl implements AnagramListService {
 
     @Override
-    public AnagramResponseDTO isAnagram(List<String> strings) {
+    public AnagramResponseDTO isListAnagram(List<String> strings) {
 
-//        Stream<String> filtred = strings.stream()
-//                .filter(x -> x.matches("[a-z]*") && !x.matches("[^null$]"));
-//
-//        if(strings.size() != (int)filtred.count()) {
-//            return new AnagramResponseDTO(false);
-//        }
-
-        String word = strings.get(0);
+        String firstWord = strings.get(0);
         int size = strings.size();
 
         for (int i = 1 ; i < strings.size() ; i++){
-            if(areTwoWordsAnagram(word, strings.get(i)) == false){
-                return new AnagramResponseDTO(false);   
+            if(areTwoWordsAnagram(firstWord, strings.get(i)) == false){
+                return new AnagramResponseDTO(false);
             }
         }
         return new AnagramResponseDTO(true);

@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface AnagramListService {
 
-    public AnagramResponseDTO isAnagram(List<String> strings);
+    public AnagramResponseDTO isListAnagram(List<String> strings);
 
 }
