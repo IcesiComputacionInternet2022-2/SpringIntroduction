@@ -16,9 +16,21 @@ public class AnagramController implements AnagramAPI {
 
     @Override
     public AnagramResponseDTO anagramResult(List<String> anagramsList) {
-        if (anagramsList.size() > 0 && anagramsList.size() <= 2 && anagramsList.stream().allMatch(s -> s != null && s.matches("[a-zA-Z]+"))) {
+        if (validateList(anagramsList) && validateElements(anagramsList)) {
             return anagramService.anagramResult(anagramsList);
         }
         return new AnagramResponseDTO(false);
+    }
+
+    private boolean validateList(List<String> anagramsList) {
+        return anagramsList != null && anagramsList.size() == 2;
+    }
+
+    private boolean validateElements(List<String> anagramsList) {
+        return anagramsList.stream().allMatch(this::validateElement);
+    }
+
+    private boolean validateElement(String word) {
+        return word != null && word.matches("[a-zA-Z]+");
     }
 }
