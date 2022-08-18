@@ -18,13 +18,13 @@ public class AnagramaStringServicesImpl implements AnagramaStringServices {
         String b = stringList.get(1).trim().toLowerCase();
         char[] pharseA = a.toCharArray();
         char[] pharseB = b.toCharArray();
-        boolean output = true;
+        boolean output = false;
         if(pharseA.length == pharseB.length){
             Arrays.sort(pharseA);
             System.out.println(pharseA);
             Arrays.sort(pharseB);
             System.out.println(pharseA);
-            if(pharseA.equals(pharseB)){
+            if(Arrays.equals(pharseA, pharseB)){
                 output = true;
             }
             System.out.println(output);
