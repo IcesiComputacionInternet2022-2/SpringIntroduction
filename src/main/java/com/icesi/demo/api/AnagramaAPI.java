@@ -16,7 +16,6 @@ public interface AnagramaAPI {
     @PostMapping("/anagrama")
     public AnagramaDTO areAnagrama(@RequestBody List<String> list);
 
-    @GetMapping("/aloh")
-    public String getStatus();
+
 
 }

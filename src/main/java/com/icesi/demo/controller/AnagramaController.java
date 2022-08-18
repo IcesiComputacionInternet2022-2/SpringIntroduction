@@ -18,11 +18,20 @@ public class AnagramaController implements AnagramaAPI {
 
     @Override
     public AnagramaDTO areAnagrama(List<String> list) {
-        return service.isAnagrama(list);
+
+        if (validateList(list) && validateElements(list)) return service.isAnagrama(list);
+        return new AnagramaDTO(false);
     }
 
-    @Override
-    public String getStatus() {
-        return "Funciona!";
+    public boolean validateList(List<String> list){
+        return list != null  && list.size() == 2;
+    }
+
+
+    public boolean validateElements(List<String> list){
+        return list.stream().allMatch(this::validateElement);
+    }
+    public boolean validateElement(String word){
+        return word != null && word.matches("[aA-zZ]+");
     }
 }

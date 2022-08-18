@@ -12,22 +12,20 @@ public class AnagramaServiceImpl implements AnagramaService {
 
     @Override
     public AnagramaDTO isAnagrama(List<String> list) {
-        String regExp = "[aA-zZ]+";
 
-        if (Pattern.matches(regExp,list.get(0)) && Pattern.matches(regExp,list.get(1))){
-            String a = list.get(0), b = list.get(1);
-            a = a.toLowerCase();
-            b = b.toLowerCase();
+            String word1 = list.get(0).toLowerCase();
+            String word2 = list.get(1).toLowerCase();
 
-            while (!a.isEmpty() && a.length() == b.length()){
-                b = b.replaceAll(a.charAt(0)+"","");
-                a = a.replaceAll(a.charAt(0)+"","");
+            while (!word1.isEmpty() && word1.length() == word2.length()){
+                String aux = word1.charAt(0)+"";
+                word2 = word2.replaceAll(aux,"");
+                word1 = word1.replaceAll(aux,"");
+                System.out.println(word1);
+                System.out.println(word2);
             }
 
-            return new AnagramaDTO(a.equals(b));
-        }else{
-            return new AnagramaDTO(false);
-        }
-
+            return new AnagramaDTO(word1.equals(word2));
+            //strong
+            //string
     }
 }
