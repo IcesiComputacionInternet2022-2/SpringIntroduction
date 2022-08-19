@@ -10,6 +10,6 @@ public class AnagramServiceImpl implements AnagramService {
 
     @Override
     public AnagramResponseDTO isAnagram(String string1, String string2) {
-        return new AnagramResponseDTO(Arrays.equals(string1.codePoints().sorted().toArray(), string2.codePoints().sorted().toArray()));
+        return new AnagramResponseDTO(Arrays.equals(string1.toLowerCase().codePoints().sorted().toArray(), string2.toLowerCase().codePoints().sorted().toArray()));
     }
 }

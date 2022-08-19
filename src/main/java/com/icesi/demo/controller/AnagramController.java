@@ -21,7 +21,7 @@ public class AnagramController implements AnagramAPI {
                     if (!string.matches("[a-zA-Z]+"))
                         return new AnagramResponseDTO(false);
                 }
-                return anagramService.isAnagram(strings.get(0).toLowerCase(), strings.get(1).toLowerCase());
+                return anagramService.isAnagram(strings.get(0), strings.get(1));
             }
         }
         return new AnagramResponseDTO(false);
