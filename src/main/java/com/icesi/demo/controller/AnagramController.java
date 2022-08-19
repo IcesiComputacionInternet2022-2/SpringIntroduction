@@ -2,8 +2,6 @@ package com.icesi.demo.controller;
 
 import com.icesi.demo.api.AnagramAPI;
 import com.icesi.demo.dto.AnagramResponseDTO;
-import com.icesi.demo.dto.ConcatenatedResponseDTO;
-import com.icesi.demo.service.StringListService;
 import com.icesi.demo.service.implementation.AnagramServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,21 +20,22 @@ public class AnagramController implements AnagramAPI {
     }
 
     public AnagramResponseDTO verifyStrings(List<String> stringList){
-        if(stringList.size() == 2){
-            String p1 = stringList.get(0);
-            String p2 = stringList.get(1);
-
-            if(p1.length() == p2.length()) {
-                if(p1.matches("^[a-zA-Z]+$") && p2.matches("^[a-zA-Z]+$")){
-                    return anagramService.anagramCheck(stringList);
-                }else{
-                    return new AnagramResponseDTO(false);
-                }
-            }else{
-                return new AnagramResponseDTO(false);
-            }
-        }else{
+        if(validateList(stringList) && validateElements(stringList)){
+            return anagramService.anagramCheck(stringList);
+        }else {
             return new AnagramResponseDTO(false);
         }
+    }
+
+    private boolean validateList(List<String> stringList){
+        return !(stringList == null) && stringList.size() == 2;
+    }
+
+    private boolean validateElements(List<String> stringList){
+        return stringList.stream().noneMatch(this::validateElement);
+    }
+
+    private boolean validateElement(String word){
+        return !(word != null) && word.matches("[a-zA-Z]+");
     }
 }
