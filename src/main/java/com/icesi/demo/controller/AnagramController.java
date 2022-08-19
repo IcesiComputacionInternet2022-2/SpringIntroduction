@@ -19,7 +19,13 @@ public class AnagramController implements AnagramAPI {
 
     @Override
     public AnagramResponseDTO findAnagram(String str1, String str2) {
-        return anagramService.findAnagram(str1, str1);
+        if(validateString(str1) && validateString(str2))
+            return anagramService.findAnagram(str1, str1);
+        return new AnagramResponseDTO(false);
+    }
+
+    private boolean validateString(String string) {
+        return string != null && string.matches("[a-zA-Z]+");
     }
 
 }
