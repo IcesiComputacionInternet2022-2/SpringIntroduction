@@ -13,17 +13,19 @@ public class AnagramServiceImpl implements AnagramService{
     @Override
     public AnagramResponseDTO checkAnagram(List<String> stringList) {
         boolean response = false;
-        if(stringList.size() == 2){
-            if(stringList.get(0) != null && stringList.get(1) != null && stringList.get(0).length() == stringList.get(1).length()){
-                if(!stringList.get(0).matches(".*\\d.*") && !stringList.get(1).matches(".*\\d.*")){
-                    char[] f = stringList.get(0).toCharArray();
-                    Arrays.sort(f);
-                    char[] s = stringList.get(1).toCharArray();
-                    Arrays.sort(s);
-                    response = String.valueOf(f).equalsIgnoreCase(String.valueOf(s));
-                }
-            }
-        }//End if
+        if(!stringList.get(0).matches(".*\\d.*") && !stringList.get(1).matches(".*\\d.*")){
+            convertToLowerCase(stringList);
+            char[] f = stringList.get(0).toCharArray();
+            Arrays.sort(f);
+            char[] s = stringList.get(1).toCharArray();
+            Arrays.sort(s);
+            response = String.valueOf(f).equals(String.valueOf(s));
+        }
         return new AnagramResponseDTO(response);
-    }
+    }//End checkAnagram
+
+    private void convertToLowerCase(List<String> stringList){
+        stringList.set(0,stringList.get(0).toLowerCase());
+        stringList.set(1,stringList.get(1).toLowerCase());
+    }//End convertToLoweCase
 }
