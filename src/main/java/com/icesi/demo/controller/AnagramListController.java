@@ -22,13 +22,12 @@ public class AnagramListController implements AnagramListAPI {
                 return false;
             }
         }
-
         return true;
     }
 
     private boolean validateSizes(List<String> stringList){
         int lenght = stringList.get(0).length();
-
+        
         for(int i=1; i<stringList.size();i++){
             if(lenght!=stringList.get(i).length()){
                 return false;
