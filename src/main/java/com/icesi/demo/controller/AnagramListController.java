@@ -2,6 +2,7 @@ package com.icesi.demo.controller;
 
 import com.icesi.demo.api.AnagramListAPI;
 import com.icesi.demo.dto.AnagramResponseDTO;
+import com.icesi.demo.service.AnagramListService;
 import com.icesi.demo.service.implementation.AnagramListServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,10 +14,12 @@ import java.util.List;
 @RestController
 public class AnagramListController implements AnagramListAPI {
 
-    private final AnagramListServiceImpl anagramListServiceImpl;
+    private final AnagramListService anagramListService; //acá es el service no la implementación
 
     @Override
     public AnagramResponseDTO isAnagram(@RequestBody List<String> stringList) {
+
+
 
         if (!validateList(stringList)){
             return new AnagramResponseDTO(false);
@@ -24,7 +27,7 @@ public class AnagramListController implements AnagramListAPI {
             if(!validateElements(stringList)){
                 return new AnagramResponseDTO(false);
             }else{
-                return anagramListServiceImpl.isAnagram(stringList);
+                return anagramListService.isAnagram(stringList);
             }
         }
     }
