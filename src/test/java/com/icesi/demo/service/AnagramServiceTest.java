@@ -83,8 +83,8 @@ public class AnagramServiceTest {
 
         ConfirmationDTO result = anagramService.checkAnagrams(stringList);
 
-        assertTrue(result.isAnagram());
+        assertFalse(result.isAnagram());
     }
 
-    
+
 }

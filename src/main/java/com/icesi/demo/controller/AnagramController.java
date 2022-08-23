@@ -17,6 +17,24 @@ public class AnagramController implements AnagramAPI{
 
     @Override
     public ConfirmationDTO checkAnagrams(List<String> stringList) {
-        return anagramService.checkAnagrams(stringList);
+        if(validList(stringList) && validElements(stringList) && validElementFormat(stringList)){
+            return anagramService.checkAnagrams(stringList);
+        }
+        else{
+            return new ConfirmationDTO(false);
+        }
     }
+
+    private boolean validList(List<String> stringList) {
+        return stringList != null && stringList.size() == 2;
+    }
+
+    private boolean validElements(List<String> stringList) {
+        return stringList.get(0) != null && stringList.get(1) != null;
+    }
+
+    private boolean validElementFormat(List<String> stringList) {
+        return stringList.get(0).matches("^[a-zA-Z]*$") && stringList.get(1).matches("^[a-zA-Z]*$");
+    }
+
 }
