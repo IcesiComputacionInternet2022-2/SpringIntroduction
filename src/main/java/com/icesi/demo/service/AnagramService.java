@@ -8,6 +8,6 @@ import java.util.List;
 public interface AnagramService {
 
 
-    public AnagramDTO anagramTwoWords(String a1,String a2);
+    public AnagramDTO anagramTwoWords(List<String> stringList);
 
 }

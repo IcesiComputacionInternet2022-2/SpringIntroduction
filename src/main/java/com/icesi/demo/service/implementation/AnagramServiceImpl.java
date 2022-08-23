@@ -6,16 +6,35 @@ import com.icesi.demo.service.AnagramService;
 import com.icesi.demo.service.StringListService;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static java.lang.reflect.Array.*;
+import static java.util.Arrays.sort;
 
 @Service
 public class AnagramServiceImpl implements AnagramService {
 
     @Override
-    public AnagramDTO anagramTwoWords(String a1,String a2) {
-        char[] string1 = a1.toCharArray();
-        char[] string2 = a2.toCharArray();
-        return new AnagramDTO(a1 == a2);
+    public AnagramDTO anagramTwoWords(List<String> stringList) {
+        char[] a = stringList.get(0).toCharArray();
+        char[] b = stringList.get(1).toCharArray();
+        sort(a);
+        sort(b);
+        boolean theTrue = true;
+        if(a.length!=b.length) {
+            theTrue=false;
+        } else {
+            for (int i = 0; i < a.length-1; i++) {
+               if(a[i] != b[i]){
+                   theTrue=false;
+                   i= a.length;
+               }
+            }
+        }
+        return new AnagramDTO(theTrue);
     }
 }
