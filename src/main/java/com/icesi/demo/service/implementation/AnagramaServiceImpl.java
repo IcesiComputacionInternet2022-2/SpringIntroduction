@@ -20,8 +20,7 @@ public class AnagramaServiceImpl implements AnagramaService {
                 String aux = word1.charAt(0)+"";
                 word2 = word2.replaceAll(aux,"");
                 word1 = word1.replaceAll(aux,"");
-                System.out.println(word1);
-                System.out.println(word2);
+
             }
 
             return new AnagramaDTO(word1.equals(word2));

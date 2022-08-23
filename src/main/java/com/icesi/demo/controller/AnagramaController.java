@@ -23,15 +23,15 @@ public class AnagramaController implements AnagramaAPI {
         return new AnagramaDTO(false);
     }
 
-    public boolean validateList(List<String> list){
+    private boolean validateList(List<String> list){
         return list != null  && list.size() == 2;
     }
 
 
-    public boolean validateElements(List<String> list){
+    private boolean validateElements(List<String> list){
         return list.stream().allMatch(this::validateElement);
     }
-    public boolean validateElement(String word){
+    private boolean validateElement(String word){
         return word != null && word.matches("[aA-zZ]+");
     }
 }
