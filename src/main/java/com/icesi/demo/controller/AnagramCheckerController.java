@@ -18,8 +18,22 @@ public class AnagramCheckerController implements AnagramCheckerAPI {
 
     @Override
     public AnagramCheckerResponseDTO checkAnagram(@RequestBody List<String> stringList) {
-        return anagramCheckerServiceImpl.checkAnagram(stringList);
+        if(verifyNull(stringList) && verifyContent(stringList) && verifySize(stringList))
+            return anagramCheckerServiceImpl.checkAnagram(stringList);
+        else
+            return new AnagramCheckerResponseDTO(false);
     }
 
+    private boolean verifyNull(List<String> stringList) {
+        return stringList != null;
+    }
+
+    private boolean verifyContent(List<String> stringList) {
+        return !stringList.contains(null);
+    }
+
+    private boolean verifySize(List<String> stringList) {
+        return stringList.size() == 2;
+    }
 
 }
