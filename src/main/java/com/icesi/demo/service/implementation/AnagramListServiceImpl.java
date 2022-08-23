@@ -22,8 +22,8 @@ public class AnagramListServiceImpl implements AnagramService {
             flag = !Character.isDigit(str2.charAt(c));
         }
         if (flag == true){
-            char[] arr1 = str1.toCharArray();
-            char[] arr2 = str2.toCharArray();
+            char[] arr1 = str1.toLowerCase().toCharArray();
+            char[] arr2 = str2.toLowerCase().toCharArray();
 
             Arrays.sort(arr1);
             Arrays.sort(arr2);
