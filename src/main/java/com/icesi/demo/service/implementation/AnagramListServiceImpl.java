@@ -20,10 +20,6 @@ public class AnagramListServiceImpl implements AnagramListService {
     @Override
     public AnagramResponseDTO isAnagram(List<String> strings) {
 
-        //We need at least two words
-        if(strings.size()<2){
-            return new AnagramResponseDTO(false);
-        }
 
         List<HashMap<Character, Integer>> maps = new ArrayList<>();
         String currentWord = "";
@@ -33,20 +29,10 @@ public class AnagramListServiceImpl implements AnagramListService {
 
             currentWord = strings.get(i);
 
-            // 1. check that there are no nulls
-            if(currentWord==null){
-                return new AnagramResponseDTO(false);
-            }
-
-            // 2. check that all sizes are the same
-            if(strings.get(0).length()!=currentWord.length()){
-                return new AnagramResponseDTO(false);
-            }
-
-            // 3. eliminate case sensitivity
+            // 1. eliminate case sensitivity
             currentWord = currentWord.toUpperCase();
 
-            // 4. Mapping every character in each word
+            // 2. Mapping every character in each word
             HashMap<Character, Integer> map = new HashMap<>();
 
             for(int j=0; j<currentWord.length();j++){
@@ -61,7 +47,7 @@ public class AnagramListServiceImpl implements AnagramListService {
             maps.add(map);
         }
 
-        // 5. Check all maps to be equal
+        // 3. Check all maps to be equal
         for (int i=1; i<maps.size(); i++){
             if(!maps.get(0).equals(maps.get(i))){
                 return new AnagramResponseDTO(false);
