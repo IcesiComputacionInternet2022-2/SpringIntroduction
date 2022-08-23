@@ -13,6 +13,9 @@ public class AnagramCheckerServiceImpl implements AnagramCheckerService {
     public AnagramCheckerResponseDTO checkAnagram(List<String> stringList) {
         if(stringList.get(0).length() != stringList.get(1).length())
             return new AnagramCheckerResponseDTO(false);
+        for(String current : stringList)
+            if(current.matches(".*\\d.*"))
+               return new AnagramCheckerResponseDTO(false);
         for(int i = 0; i < stringList.size(); i ++) {
             char[] temp = stringList.get(i).toLowerCase().toCharArray();
             Arrays.sort(temp);
