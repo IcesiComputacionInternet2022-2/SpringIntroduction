@@ -50,4 +50,20 @@ public class AnagramControllerTest {
         assertFalse(anagramController.anagramResult(words).isResult());
         verify(anagramService, times(0)).anagramResult(any());
     }
+
+    @Test
+    public void testControllerListIsNull() {
+        List<String> words = new ArrayList<>();
+        assertFalse(anagramController.anagramResult(words).isResult());
+        verify(anagramService, times(0)).anagramResult(any());
+    }
+
+    @Test
+    public void testControllerElementsAreNumbers() {
+        List<String> words = new ArrayList<>();
+        words.add("123");
+        words.add("321");
+        assertFalse(anagramController.anagramResult(words).isResult());
+        verify(anagramService, times(0)).anagramResult(any());
+    }
 }
