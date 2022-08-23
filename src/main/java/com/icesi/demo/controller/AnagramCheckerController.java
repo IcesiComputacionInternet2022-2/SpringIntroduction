@@ -3,7 +3,7 @@ package com.icesi.demo.controller;
 
 import com.icesi.demo.api.AnagramCheckerAPI;
 import com.icesi.demo.dto.AnagramCheckerResponseDTO;
-import com.icesi.demo.service.implementation.AnagramCheckerServiceImpl;
+import com.icesi.demo.service.AnagramCheckerService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 public class AnagramCheckerController implements AnagramCheckerAPI {
 
-    private final AnagramCheckerServiceImpl anagramCheckerServiceImpl;
+    private final AnagramCheckerService anagramCheckerServiceImpl;
 
     @Override
     public AnagramCheckerResponseDTO checkAnagram(@RequestBody List<String> stringList) {
