@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class AnagramController implements AnagramAPI{
 
-    private final AnagramServiceImpl anagramService;
+    private final AnagramService anagramService;
 
     @Override
     public AnagramResponseDTO isAnagram(List<String> stringList) {
