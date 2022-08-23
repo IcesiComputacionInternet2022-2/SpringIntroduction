@@ -31,7 +31,7 @@ public class AnagramServiceTest{
     }
 
     @Test
-    public void testIsAnagramCaseSensitive() {
+    public void testIsAnagramCaseInsensitive() {
         List<String> stringList = new ArrayList<>();
         stringList.add("Listen");
         stringList.add("Silent");

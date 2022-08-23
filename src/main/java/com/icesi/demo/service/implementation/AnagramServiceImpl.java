@@ -16,18 +16,18 @@ public class AnagramServiceImpl implements AnagramService {
 
     @Override
     public IsAnagramResponseDTO isAnagram(List<String> words) {
-
-        if(words.contains(null)){
-            return new IsAnagramResponseDTO(false);
-        }
-
         //Verifies if all strings have the same length
-        int prevLength = words.get(0).length();
+        int expectedLength = words.get(0).length();
         for (String word:words){
-            int newLength = word.length();
-            if (prevLength != newLength){return new IsAnagramResponseDTO(false);}
+            if (word.length() != expectedLength){return new IsAnagramResponseDTO(false);}
         }
 
+        for (int i = 0; i < words.size();i++){
+            words.set(i,words.get(i).toLowerCase());
+        }
+
+
+        //Looks for letters of the first word and removes them until there are no more letters
         String firstWord = words.get(0);
         for (int i = 0; i < firstWord.length(); i++){
             char currentLetter = firstWord.charAt(i);
@@ -36,12 +36,12 @@ public class AnagramServiceImpl implements AnagramService {
             }
         }
 
+        //If a word is not "" or equally does not have length 0 then at least 1 word is not an anagram
         for(String word: words){
-            if(!word.equals("")){
+            if(word.length() != 0){
                 return new IsAnagramResponseDTO(false);
             }
         }
-
 
         return new IsAnagramResponseDTO(true);
     }
