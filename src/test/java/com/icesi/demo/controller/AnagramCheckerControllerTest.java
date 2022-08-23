@@ -66,5 +66,4 @@ public class AnagramCheckerControllerTest {
         verify(anagramCheckerService, times(0)).checkAnagram(any());
     }
 
-
 }
