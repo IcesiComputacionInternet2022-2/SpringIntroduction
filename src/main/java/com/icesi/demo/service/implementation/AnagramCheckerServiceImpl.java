@@ -14,7 +14,7 @@ public class AnagramCheckerServiceImpl implements AnagramCheckerService {
         if(stringList.get(0).length() != stringList.get(1).length())
             return new AnagramCheckerResponseDTO(false);
         for(int i = 0; i < stringList.size(); i ++) {
-            char[] temp = stringList.get(i).toCharArray();
+            char[] temp = stringList.get(i).toLowerCase().toCharArray();
             Arrays.sort(temp);
             stringList.remove(i);
             stringList.add(i, new String(temp));
