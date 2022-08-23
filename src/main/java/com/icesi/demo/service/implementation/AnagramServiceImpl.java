@@ -29,7 +29,7 @@ public class AnagramServiceImpl implements AnagramService {
             theTrue=false;
         } else {
             for (int i = 0; i < a.length-1; i++) {
-               if(a[i] != b[i]){
+               if(Character.toLowerCase(a[i]) != Character.toLowerCase(b[i])){
                    theTrue=false;
                    i= a.length;
                }

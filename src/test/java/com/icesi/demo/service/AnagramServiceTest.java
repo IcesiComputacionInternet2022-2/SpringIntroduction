@@ -51,7 +51,7 @@ public class AnagramServiceTest {
 
         AnagramDTO result = anagramService.anagramTwoWords(stringList);
 
-        assertTrue(result.isResult());
+        assertFalse(result.isResult());
     }
 
     @Test
