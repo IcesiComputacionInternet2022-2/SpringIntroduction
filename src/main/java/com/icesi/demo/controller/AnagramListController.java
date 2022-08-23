@@ -14,7 +14,6 @@ public class AnagramListController implements AnagramListAPI {
 
     public final AnagramListService anagramListService;
 
-
     @Override
     public AnagramResponseDTO isAnagram(List<String> strings) {
         if(validateList(strings) == false){
@@ -31,7 +30,7 @@ public class AnagramListController implements AnagramListAPI {
     }
 
     private boolean validateElements(List<String> stringList){
-        return stringList.stream().noneMatch(s -> s == null && s.matches("[a-z]*"));
+        return stringList.stream().allMatch(s -> s != null && s.matches("[a-z]*"));
     }
 
 }
