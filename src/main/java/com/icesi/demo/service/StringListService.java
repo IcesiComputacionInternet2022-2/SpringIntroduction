@@ -10,5 +10,4 @@ public interface StringListService {
 
     public ConcatenatedResponseDTO concatenateStrings(List<String> stringList);
 
-
 }
